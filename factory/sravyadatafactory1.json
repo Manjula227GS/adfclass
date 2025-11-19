@@ -1,0 +1,9 @@
+{
+	"name": "sravyadatafactory1",
+	"location": "centralindia",
+	"identity": {
+		"type": "SystemAssigned",
+		"principalId": "949278d5-4e1f-43f8-862e-af095e3d6a24",
+		"tenantId": "e82bdc6c-9dce-4ed4-a6e1-b97b67f04670"
+	}
+}
