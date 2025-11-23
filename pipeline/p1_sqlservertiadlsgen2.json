@@ -18,6 +18,10 @@
 						"type": "AzureSqlSource",
 						"sqlReaderQuery": "SELECT table_name FROM information_schema.tables WHERE table_type = 'BASE TABLE'",
 						"partitionOption": "None"
+					},
+					"dataset": {
+						"referenceName": "AzureSqlTable2",
+						"type": "DatasetReference"
 					}
 				},
 				"dataset": {
@@ -64,8 +68,37 @@
 									},
 									"partitionOption": "None"
 								},
-								"enableStaging": false
-							}
+								"sink": {
+									"type": "ParquetSink",
+									"storeSettings": {
+										"type": "AzureBlobStorageWriteSettings"
+									},
+									"formatSettings": {
+										"type": "ParquetWriteSettings"
+									}
+								},
+								"enableStaging": false,
+								"translator": {
+									"type": "TabularTranslator",
+									"typeConversion": true,
+									"typeConversionSettings": {
+										"allowDataTruncation": true,
+										"treatBooleanAsNumber": false
+									}
+								}
+							},
+							"inputs": [
+								{
+									"referenceName": "AzureSqlTable3",
+									"type": "DatasetReference"
+								}
+							],
+							"outputs": [
+								{
+									"referenceName": "Parquet2",
+									"type": "DatasetReference"
+								}
+							]
 						}
 					]
 				}
